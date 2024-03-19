@@ -1,22 +1,18 @@
 import json
 
-def cal_square(n):
-    return n**2
-
+import requests
+import pandas as pd
 
 
 def lambda_handler(event,context):
-    print ("Event Data->",event)
-    print("Trigger Received !!!")
-
-    num =5
-    res_square=cal_square(num)
 
 
-    print("Square of {}".format(num),res_square)
+    print("Event Data->",event)
 
-    return {
-        'statusCode' :200,
-         'body':json.dumps('Bye Bye !!')
-    }
-    
+    response=requests.get("https://www.google.com/")
+    print(response.text)
+
+    d={'col1':[1,2],'col2':[3,4]}
+    df=pd.DataFrame(data=d)
+    print(df)
+    print('Demo Completed and everything done !!!')
